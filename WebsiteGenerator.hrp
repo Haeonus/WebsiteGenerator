@@ -1,0 +1,41 @@
+		<!--BODY-->
+        <br><p style="padding:0px 20px 0px 20px">
+        My goal is to develop this website and add a lot of content--notes on topics that I found interesting (from class or otherwise), projects I've undertaken, or just useful information I want to remember. 
+        However, the task of updating all the headers (and footer) for each page seemed dauntingly tedious, especially since I hope to add a lot of pages and because I will likely reorganize everything in the near future. 
+        Therefore, I decided to write a script in C++ which would automatically generate the navbar \(html\) code from a list of files, then insert the header, body, and footer into each page--storing everything in a
+        folder specified by the input arguments.
+        <br>
+        Yes I know many of you are likely thinking "He should have just used Laravel" or something along those lines; to that I provide two arguments. The first: I want something that works exactly how I want it to and
+        only as much as I want it to. This avoids being bogged down in features I won't use--and I'm likely just being idiosyncratic about my workflow. The second: I'm using the free AWS hosting, which does not support 
+        PHP or server side processing. I may be wrong and am just reinventing the aforementioned Laravel; but it is an interesting exercise nevertheless. 
+        </p>
+        
+    	<br><p style="padding:0px 20px 0px 20px">
+        In terms of functionality, the script accepts two input arguments: the first is the name of the mapping file, and the second is the name of the folder where all the output \(html\) files will be stored. 
+        The command looks like so: \[ ./generate.site website.hmapped 2018-12-26\] which accordingly, generates the files (and puts them in a newly created folder) seen below based on the mapping file, also seen below.
+        </p>
+        
+        <img src="../Images/hmappedExample.png" class="rounded mx-auto d-block">
+        <img src="../Images/siteCompOutputExample.png" class="rounded mx-auto d-block">
+        
+        
+        <br><p style="padding:0px 20px 0px 20px">
+    	The program scrolls through the mapping file, and pulls everything into a two dimensional vector. Each row signifies a line; each element in the row signifies a unit in the hierarchy of the site. 
+    	For example, if you look at the NavBar, a direct link would only have one element in its row, while a single layer dropdown has two e.g. \(Physics:MewesResearch\). 
+        </p>
+        
+        
+        <br><p style="padding:0px 20px 0px 20px">
+        The site then closes this file and uses that structure to generate the header, which is constant across all the pages, and the navbar (which is technically part of the body). Currently the footer is pretty basic.
+        The body is directly copied from the .hrp files, meaning all the html encoding (and css) will be properly copied over. This is less of a compiler and more of an assembler in the sense that the structure of the input
+        and output does not change; rather, the input and output just appear in slightly different formats. 
+        </p>
+        
+        <br><p style="padding:0px 20px 0px 20px">
+        There are a lot of improvements I will likely make in the future. I would like to split up the stylistic and functional portions of header generation to make this a more flexible tool for different websites.
+        I would also like to add some support for javascript, either within the html files or as separate files themselves. There are also little tweaks I plan to make to the project. 
+        
+        <br> If you would like you can look at the code; although admittedly it is sloppy and probably inefficient. 
+        </p>
+        
+        <a href="https://www.w3schools.com/html/">Github WebsiteGenerator</a>
